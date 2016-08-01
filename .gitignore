@@ -1,0 +1,9 @@
+*.class
+.project
+.classpath
+.profile
+.settings
+.svn
+target
+build
+bin
