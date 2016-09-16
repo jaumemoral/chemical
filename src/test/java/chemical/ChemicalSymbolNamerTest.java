@@ -62,6 +62,7 @@ public class ChemicalSymbolNamerTest {
 		assertEquals("Protactinium",table.getNameForSymbol("Pt"));
 		assertEquals("Californium",table.getNameForSymbol("Cf"));
 		assertEquals("Lionoium",table.getNameForSymbol("Iu"));
+		assertEquals("Margium",table.lastElementAdded());
 	}
 
 
