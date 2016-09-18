@@ -43,28 +43,11 @@ public class ChemicalSymbolNamerTest {
 	public void testFindNumberOfValidSymbols() {
 		assertEquals(namer.findNumberOfValidSymbols("Zuulon"),11);
 	}
-	
-	@Test
-	public void testCreatePeriodicTable() throws IOException {
-		PeriodicTable table=namer.createPeriodicTable(Arrays.asList("Protactinium"));		
-		assertEquals("Protactinium",table.getNameForSymbol("Pr"));		
-	}
 
 	@Test
 	public void testFindValidSymbols() {
-		String firstName=namer.findValidSymbols("Protactinium").get(0);		
-		assertEquals("Pr",firstName);		
-	}	
-	
-	@Test
-	public void testCreatePeriodicTableWithAllElements() throws IOException {
-		PeriodicTable table=namer.createPeriodicTableWithAllElements();		
-		assertEquals("Protactinium",table.getNameForSymbol("Pt"));
-		assertEquals("Californium",table.getNameForSymbol("Cf"));
-		assertEquals("Lionoium",table.getNameForSymbol("Iu"));
-		assertEquals("Margium",table.lastElementAdded());
+		String firstName=namer.findValidSymbols("Protactinium").get(0);
+		assertEquals("Pr",firstName);
 	}
-
-
 
 }

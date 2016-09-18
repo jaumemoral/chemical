@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 
 public class ChemicalSymbolNamer {
 
-
 	public List<String> findValidSymbols(String name) {
 		List<String> symbols=new ArrayList<String>();
 		char letters[]=name.toCharArray();
@@ -24,46 +23,17 @@ public class ChemicalSymbolNamer {
 		}
 		return symbols;
 	}
-	
-	
+
 	public boolean checkSymbol(String name, String symbol) {
 		return findValidSymbols(name).contains(symbol);
 	}
 
 	public String findFirstValidSymbol(String name) {
-		List<String> symbols=findValidSymbols(name);
-		Collections.sort(symbols);
-		return symbols.get(0);
+		return Collections.min(findValidSymbols(name));
 	}
 
 	public int findNumberOfValidSymbols(String name) {
 		return findValidSymbols(name).size();
-	}
-	
-	public PeriodicTable createPeriodicTableWithAllElements() throws IOException {
-		List<String> names=new ElementReader().readAllElements();
-		PeriodicTable table=createPeriodicTable(names);
-		return table;
-	}	
-
-	public PeriodicTable createPeriodicTable(List<String> names) {
-		PeriodicTable table=new PeriodicTable();
-		try {
-			for (String name:names) addToPeriodicTable(name,table);
-		} catch (NoPossibleSymbolException e) {
-			;// No fem res!
-		}
-		return table;
-	}
-	
-	public void addToPeriodicTable(String name, PeriodicTable table) throws NoPossibleSymbolException {
-		for (String symbol: findValidSymbols(name)) {
-			if (table.isSymbolAvailable(symbol)) {
-				table.addElement(name,symbol);
-				return;
-			}
-		}
-		throw new NoPossibleSymbolException(name);
 	}
 
 }
