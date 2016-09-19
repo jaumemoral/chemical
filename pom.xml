@@ -11,4 +11,16 @@
 			<version>4.8.1</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<configuration>
+					<mainClass>chemical.PeriodicTableSolver</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
