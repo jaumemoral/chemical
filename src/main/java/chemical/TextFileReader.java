@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ElementReader {
-	public List<String> readAllElements() throws IOException {
-		InputStream inputStream=this.getClass().getClassLoader().getResource("elements.txt").openStream();
+public class TextFileReader {
+	public List<String> readLines(String fileName) throws IOException {
+		InputStream inputStream=this.getClass().getClassLoader().getResource(fileName).openStream();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 		List<String> names=new ArrayList<String>();
 		String line;

@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class ChemicalSymbolNamerTest {
 
-	ChemicalSymbolNamer namer = new ChemicalSymbolNamer();
+	ChemicalSymbolNamer namer = new SplurthianChemicalSymbolNamer();
 
 	@Test
 	public void testValidSymbols() {

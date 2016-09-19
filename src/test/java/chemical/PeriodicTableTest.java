@@ -8,23 +8,29 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class PeriodicTableGeneratorTest {
+public class PeriodicTableTest {
 
-	PeriodicTableGenerator generator= new PeriodicTableGenerator(new ChemicalSymbolNamer());
+	ChemicalSymbolNamer namer= new SplurthianChemicalSymbolNamer();
 
 	@Test
-	public void testCreatePeriodicTable() throws IOException {
-		PeriodicTable table=generator.createPeriodicTable(Arrays.asList("Protactinium"));
+	public void testAddElement() throws IOException, NoPossibleSymbolException {
+		PeriodicTable table= new PeriodicTable(namer);
+		table.addElement("Protactinium");
 		assertEquals("Protactinium",table.getNameForSymbol("Pr"));
 	}
 
 	@Test
 	public void testCreatePeriodicTableWithAllElements() throws IOException {
-		PeriodicTable table=generator.createPeriodicTableWithAllElements();
+		PeriodicTable table=new PeriodicTable(namer);
+		List<String> elements=new TextFileReader().readLines("elements.txt");
+		try {
+			table.addElements(elements);
+		} catch (NoPossibleSymbolException e) {
+			;
+		}
 		assertEquals("Protactinium",table.getNameForSymbol("Pt"));
 		assertEquals("Californium",table.getNameForSymbol("Cf"));
 		assertEquals("Lionoium",table.getNameForSymbol("Iu"));
-		assertEquals("Margium",table.lastElementAdded());
 	}
 
 

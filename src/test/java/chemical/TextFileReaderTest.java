@@ -7,14 +7,14 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class ElementReaderTest {
+public class TextFileReaderTest {
 
-	ElementReader reader = new ElementReader();
-	
+	TextFileReader reader = new TextFileReader();
+
 	@Test
 	public void testReadAllElements() throws IOException {
-		List<String> names=reader.readAllElements();
-		assertEquals("Hydrogen",names.get(0));		
+		List<String> names=reader.readLines("elements.txt");
+		assertEquals("Hydrogen",names.get(0));
 		assertEquals("Sharptoothium",names.get(names.size()-1));
 	}
 
